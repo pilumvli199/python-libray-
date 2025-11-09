@@ -1,1 +1,144 @@
-# List your dependencies here
+# ═══════════════════════════════════════════════════════════════════════════════
+# requirements.txt
+# ═══════════════════════════════════════════════════════════════════════════════
+"""
+pandas>=2.0.0
+numpy>=1.24.0
+"""
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# test_data.json - Complete Test Data Example
+# ═══════════════════════════════════════════════════════════════════════════════
+
+TEST_JSON = {
+    "symbol": "NIFTY",
+    "current_price": 44520.0,
+    "expiry_date": "2025-11-28",
+    
+    "candles": {
+        "5min": [
+            # Last 200 candles (5-min timeframe)
+            {"timestamp": "2025-11-09 09:15:00", "open": 44480.0, "high": 44530.0, "low": 44460.0, "close": 44500.0, "volume": 150000},
+            {"timestamp": "2025-11-09 09:20:00", "open": 44500.0, "high": 44550.0, "low": 44490.0, "close": 44520.0, "volume": 180000},
+            {"timestamp": "2025-11-09 09:25:00", "open": 44520.0, "high": 44560.0, "low": 44510.0, "close": 44540.0, "volume": 160000},
+            {"timestamp": "2025-11-09 09:30:00", "open": 44540.0, "high": 44580.0, "low": 44530.0, "close": 44560.0, "volume": 170000},
+            {"timestamp": "2025-11-09 09:35:00", "open": 44560.0, "high": 44590.0, "low": 44540.0, "close": 44570.0, "volume": 165000},
+            {"timestamp": "2025-11-09 09:40:00", "open": 44570.0, "high": 44600.0, "low": 44555.0, "close": 44580.0, "volume": 175000},
+            {"timestamp": "2025-11-09 09:45:00", "open": 44580.0, "high": 44610.0, "low": 44570.0, "close": 44595.0, "volume": 180000},
+            {"timestamp": "2025-11-09 09:50:00", "open": 44595.0, "high": 44620.0, "low": 44580.0, "close": 44600.0, "volume": 185000},
+            {"timestamp": "2025-11-09 09:55:00", "open": 44600.0, "high": 44630.0, "low": 44590.0, "close": 44610.0, "volume": 190000},
+            {"timestamp": "2025-11-09 10:00:00", "open": 44610.0, "high": 44640.0, "low": 44600.0, "close": 44620.0, "volume": 195000},
+            # Add 190 more similar candles for complete 200 candle dataset
+            # For testing, even 20-30 candles will work but analysis will be limited
+        ],
+        
+        "15min": [
+            # Last 175 candles (15-min timeframe)
+            {"timestamp": "2025-11-09 09:00:00", "open": 44450.0, "high": 44550.0, "low": 44430.0, "close": 44520.0, "volume": 450000},
+            {"timestamp": "2025-11-09 09:15:00", "open": 44520.0, "high": 44600.0, "low": 44510.0, "close": 44580.0, "volume": 480000},
+            {"timestamp": "2025-11-09 09:30:00", "open": 44580.0, "high": 44650.0, "low": 44570.0, "close": 44620.0, "volume": 500000},
+            {"timestamp": "2025-11-09 09:45:00", "open": 44620.0, "high": 44680.0, "low": 44610.0, "close": 44650.0, "volume": 520000},
+            {"timestamp": "2025-11-09 10:00:00", "open": 44650.0, "high": 44700.0, "low": 44630.0, "close": 44670.0, "volume": 540000},
+            # Add 170 more candles...
+        ],
+        
+        "1hour": [
+            # Last 50 candles (1-hour timeframe)
+            {"timestamp": "2025-11-09 09:00:00", "open": 44400.0, "high": 44600.0, "low": 44350.0, "close": 44520.0, "volume": 1800000},
+            {"timestamp": "2025-11-09 10:00:00", "open": 44520.0, "high": 44700.0, "low": 44500.0, "close": 44670.0, "volume": 2000000},
+            {"timestamp": "2025-11-09 11:00:00", "open": 44670.0, "high": 44800.0, "low": 44650.0, "close": 44750.0, "volume": 2100000},
+            {"timestamp": "2025-11-09 12:00:00", "open": 44750.0, "high": 44850.0, "low": 44730.0, "close": 44820.0, "volume": 2200000},
+            {"timestamp": "2025-11-09 13:00:00", "open": 44820.0, "high": 44900.0, "low": 44800.0, "close": 44880.0, "volume": 2300000},
+            # Add 45 more candles...
+        ]
+    },
+    
+    "oi_data": {
+        "current": {
+            "timestamp": "2025-11-09 10:30:00",
+            "strikes": [
+                {"strike": 43800, "ce_oi": 800000, "pe_oi": 500000, "ce_volume": 20000, "pe_volume": 15000},
+                {"strike": 43900, "ce_oi": 900000, "pe_oi": 600000, "ce_volume": 25000, "pe_volume": 20000},
+                {"strike": 44000, "ce_oi": 1500000, "pe_oi": 800000, "ce_volume": 50000, "pe_volume": 30000},
+                {"strike": 44100, "ce_oi": 1400000, "pe_oi": 900000, "ce_volume": 45000, "pe_volume": 35000},
+                {"strike": 44200, "ce_oi": 1600000, "pe_oi": 1000000, "ce_volume": 55000, "pe_volume": 40000},
+                {"strike": 44300, "ce_oi": 1800000, "pe_oi": 1100000, "ce_volume": 60000, "pe_volume": 45000},
+                {"strike": 44400, "ce_oi": 2000000, "pe_oi": 1200000, "ce_volume": 70000, "pe_volume": 50000},
+                {"strike": 44500, "ce_oi": 2500000, "pe_oi": 2800000, "ce_volume": 100000, "pe_volume": 120000},  # ATM
+                {"strike": 44600, "ce_oi": 1200000, "pe_oi": 2000000, "ce_volume": 50000, "pe_volume": 70000},
+                {"strike": 44700, "ce_oi": 1000000, "pe_oi": 1800000, "ce_volume": 40000, "pe_volume": 60000},
+                {"strike": 44800, "ce_oi": 900000, "pe_oi": 1600000, "ce_volume": 35000, "pe_volume": 55000},
+                {"strike": 44900, "ce_oi": 800000, "pe_oi": 1400000, "ce_volume": 30000, "pe_volume": 45000},
+                {"strike": 45000, "ce_oi": 700000, "pe_oi": 1200000, "ce_volume": 25000, "pe_volume": 40000},
+            ]
+        },
+        
+        "fifteen_min_ago": {
+            "timestamp": "2025-11-09 10:15:00",
+            "strikes": [
+                {"strike": 43800, "ce_oi": 780000, "pe_oi": 480000},
+                {"strike": 43900, "ce_oi": 880000, "pe_oi": 580000},
+                {"strike": 44000, "ce_oi": 1450000, "pe_oi": 750000},
+                {"strike": 44100, "ce_oi": 1350000, "pe_oi": 850000},
+                {"strike": 44200, "ce_oi": 1550000, "pe_oi": 950000},
+                {"strike": 44300, "ce_oi": 1750000, "pe_oi": 1050000},
+                {"strike": 44400, "ce_oi": 1950000, "pe_oi": 1150000},
+                {"strike": 44500, "ce_oi": 2400000, "pe_oi": 2700000},
+                {"strike": 44600, "ce_oi": 1150000, "pe_oi": 1950000},
+                {"strike": 44700, "ce_oi": 950000, "pe_oi": 1750000},
+                {"strike": 44800, "ce_oi": 850000, "pe_oi": 1550000},
+                {"strike": 44900, "ce_oi": 750000, "pe_oi": 1350000},
+                {"strike": 45000, "ce_oi": 680000, "pe_oi": 1180000},
+            ]
+        },
+        
+        "thirty_min_ago": {
+            "timestamp": "2025-11-09 10:00:00",
+            "strikes": [
+                {"strike": 43800, "ce_oi": 760000, "pe_oi": 460000},
+                {"strike": 43900, "ce_oi": 860000, "pe_oi": 560000},
+                {"strike": 44000, "ce_oi": 1400000, "pe_oi": 700000},
+                {"strike": 44100, "ce_oi": 1300000, "pe_oi": 800000},
+                {"strike": 44200, "ce_oi": 1500000, "pe_oi": 900000},
+                {"strike": 44300, "ce_oi": 1700000, "pe_oi": 1000000},
+                {"strike": 44400, "ce_oi": 1900000, "pe_oi": 1100000},
+                {"strike": 44500, "ce_oi": 2300000, "pe_oi": 2600000},
+                {"strike": 44600, "ce_oi": 1100000, "pe_oi": 1900000},
+                {"strike": 44700, "ce_oi": 900000, "pe_oi": 1700000},
+                {"strike": 44800, "ce_oi": 800000, "pe_oi": 1500000},
+                {"strike": 44900, "ce_oi": 700000, "pe_oi": 1300000},
+                {"strike": 45000, "ce_oi": 660000, "pe_oi": 1160000},
+            ]
+        }
+    }
+}
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Quick Test Script
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def quick_test():
+    """Quick test with sample data"""
+    import json
+    from main import MarketFusionAnalyzer, format_output_for_bot
+    
+    print("🧪 Testing Market Fusion Analyzer...\n")
+    
+    # Convert to JSON string
+    json_data = json.dumps(TEST_JSON)
+    
+    # Initialize analyzer
+    analyzer = MarketFusionAnalyzer()
+    
+    # Run analysis
+    result = analyzer.analyze_from_json(json_data)
+    
+    # Print formatted output
+    print(format_output_for_bot(result))
+    
+    print("\n✅ Test successful!")
+    
+    return result
+
+if __name__ == "__main__":
+    quick_test()
